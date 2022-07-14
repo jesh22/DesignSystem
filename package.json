@@ -1,4 +1,5 @@
 {
+  "homepage": "http://YOUR_GITHUB_USERNAME.github.io/REPO_NAME",
   "name": "design-system",
   "version": "0.0.0",
   "scripts": {
@@ -6,7 +7,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
+    "build-storybook": "build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -26,13 +32,33 @@
     "@angular-devkit/build-angular": "^14.0.4",
     "@angular/cli": "~14.0.4",
     "@angular/compiler-cli": "^14.0.0",
+    "@babel/core": "^7.18.6",
+    "@compodoc/compodoc": "^1.1.19",
+    "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addon-storyshots": "^6.5.9",
+    "@storybook/addon-storyshots-puppeteer": "^6.5.9",
+    "@storybook/angular": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/jest": "^0.0.10",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/testing-angular": "^0.0.12",
+    "@storybook/testing-library": "^0.0.13",
     "@types/jasmine": "~4.0.0",
+    "babel-loader": "^8.2.5",
+    "gh-pages": "^4.0.0",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "puppeteer": "^3.3.0",
+    "storybook-addon-designs": "^6.3.1",
+    "storybook-design-token": "^2.6.0",
     "typescript": "~4.7.2"
   }
 }
